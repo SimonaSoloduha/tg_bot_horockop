@@ -1,4 +1,6 @@
 import os
+import logging
+
 from dotenv import load_dotenv
 
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
@@ -13,7 +15,6 @@ from messages import HOROSCOPE_COMPATIBILITY, HOROSCOPE_TOMORROW, HOROSCOPE_ABOU
     HOROSCOPE_TODAY
 
 from parser import parse_horoscope_for_all, parse_horoscope_for_zodiac, parse_horoscope_compatibility
-
 
 load_dotenv()
 
@@ -44,6 +45,7 @@ async def bot_start(msg: Message):
                      f"{msg.from_user['first_name']}, cейчас тебе все расскажу, покажу, предскажу\n\n")
     await msg.answer("С чего начнем?\n(Жми кнопку ниже)",
                      reply_markup=get_start_keyboard())
+    logging.info(f"Name: {msg.from_user['first_name']}, date: {msg.from_user['date']}.")
 
 
 # На сегодня / на завтра
@@ -152,6 +154,9 @@ async def get_horoscope_for_zodiac(callback: types.CallbackQuery, state: FSMCont
                 await callback.message.answer(f'{horoscope_type} для: мужчина - {horoscope_compatibility_he} и '
                                               f'девушка {zodiac}:\n\n')
                 await state.finish()
+                logging.info(f'Name: {callback.from_user["first_name"]}, для: мужчина - {horoscope_compatibility_he} и '
+                             f'девушка {zodiac}:\n\n')
+
                 for msg_horoscope in horoscope:
                     await callback.message.answer(msg_horoscope)
             else:
