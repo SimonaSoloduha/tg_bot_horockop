@@ -1,5 +1,6 @@
 import os
 import logging
+import sys
 
 from dotenv import load_dotenv
 
@@ -25,6 +26,8 @@ bot = Bot(token=API_TOKEN, parse_mode='HTML')
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 dp.middleware.setup(LoggingMiddleware())
+
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 
 def get_start_keyboard() -> ReplyKeyboardMarkup:
