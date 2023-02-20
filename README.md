@@ -1,3 +1,4 @@
-[//]: # (https://horoskopebot.herokuapp.com/ )
+# Телеграм бот "Гороскоп" 
 
-[//]: # (# https://git.heroku.com/horoskopebot.git)
+Перейти в тг: [Гороскоп от бабы Симы](https://tlgg.ru/@God_Willing_bot)
+

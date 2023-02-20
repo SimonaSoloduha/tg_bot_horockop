@@ -1,17 +1,23 @@
-from aiogram.contrib.middlewares.logging import LoggingMiddleware
+import os
+from dotenv import load_dotenv
 
+from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import KeyboardButton, Message, ReplyKeyboardMarkup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from buttons import button_appendix, znaki_zodiaka_inline, button_compatibility, button_yes, to_day_inline
-from config import API_TOKEN
 from messages import HOROSCOPE_COMPATIBILITY, HOROSCOPE_TOMORROW, HOROSCOPE_ABOUT, HOROSCOPE_FOR_ONE, HOROSCOPE_FOR_ALL, \
     HOROSCOPE_ABOUT_APPENDIX, MASSAGES_HOROSCOPE_ABOUT, HOROSCOPE_COMPATIBILITY_YES, HOROSCOPE_COMPATIBILITY_SHE, \
     HOROSCOPE_TODAY
 
 from parser import parse_horoscope_for_all, parse_horoscope_for_zodiac, parse_horoscope_compatibility
+
+
+load_dotenv()
+
+API_TOKEN = os.getenv("API_TOKEN")
 
 bot = Bot(token=API_TOKEN, parse_mode='HTML')
 
