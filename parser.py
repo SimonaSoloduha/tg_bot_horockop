@@ -1,7 +1,22 @@
+import logging
 import re
 
 import requests
 from bs4 import BeautifulSoup
+
+import re
+
+
+def remove_last_sentence_with_re(paragraph):
+    # Поиск последнего предложения с помощью регулярного выражения
+    sentence_pattern = r'[^.!?]+[.!?]'  # Простое регулярное выражение для предложения
+    sentences = re.findall(sentence_pattern, paragraph)
+
+    if len(sentences) > 1:
+        updated_paragraph = ' '.join(sentences[:-1])
+        return updated_paragraph
+    else:
+        return ""
 
 
 def get_content(url):
@@ -23,8 +38,15 @@ def parse_horoscope_for_zodiac(zodiac, day):
 def parse_horoscope_for_all(day):
     url = f'https://uznayvse.ru/goroskop/all-{day}.html'
     content = get_content(url)
-    content = content.replace('Выберите свой знак:ОвенТелецБлизнецыРакЛевДеваВесыСкорпионСтрелецКозерогВодолейРыбы', '')
-    return content
+    content = content.split('Подробнее')
+    content_text = ''
+
+    for i in content:
+        updated_paragraph = remove_last_sentence_with_re(i)
+        updated_paragraph = updated_paragraph.replace('гороскоп на сегодня', '\t\n')
+        if updated_paragraph:
+            content_text += f'🔮{updated_paragraph}\t\t\n'
+    return content_text
 
 
 def parse_horoscope_compatibility(he, she):
@@ -53,6 +75,3 @@ def parse_horoscope_compatibility(he, she):
             else:
                 result_content.append(f'\n{data_g}\n')
     return result_content
-
-
-# parse_horoscope_compatibility('oven', 'rak')
