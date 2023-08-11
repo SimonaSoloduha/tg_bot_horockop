@@ -250,7 +250,7 @@ MASSAGES_HOROSCOPE_ABOUT = {
                     'вам горсть бабла и советов.\n\nСтоит отметить, что если он ваш друг, '
                     'не обижайтесь на него и слушайте некоторые его советы – бывает, '
                     'он говорит дельные вещи.',
-        'sticker': 'CAACAgIAAxkBAAEHvNxj61aD67YiDkDFaMwSztVQhHcStwAC8gADSkh8Egr9JjODLhsZLgQ',
+        'sticker': 'CAACAgIAAxkBAAK5FmTWIS6PkGTOcBD-WXOyFjujjwwQAAJOAAMdLIgQplss0TdjuC4wBA',
 
     },
     'kozerog': {
@@ -327,6 +327,6 @@ MASSAGES_HOROSCOPE_ABOUT = {
                     'даже не подозревая о том, что их жестоко обманывают, плачась в просторную жилетку. '
                     '\n\nРыбы, творческий знак. Нередко их можно застать с барабаном или арфой в руке, '
                     'либо просто с кастрюлей, невозмутимо погруженных в творческий процесс.',
-        'sticker': 'CAACAgIAAxkBAAEHvMRj61Rg8YHDwUdkC28DkC21t6uMawAC1RoAAt1ziUidZ5GtV1xt5y4E',
+        'sticker': 'CAACAgIAAxkBAAK5GGTWIfxD6aLcXOhberwPdmCQ4Wf7AALrXQEAAWOLRgxh13xSm7JIVTAE',
     },
 }
